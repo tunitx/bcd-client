@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
+import { SIGNUP } from "../server-routes/authRoutes";
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const Signup = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/register", formData);
+            const response = await axios.post(SIGNUP, formData);
 
             if (response.status === 201) {
                 const { SessionToken } = response.data;

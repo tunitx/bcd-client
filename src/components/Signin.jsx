@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { LoadingOutlined } from "@ant-design/icons";
+import { SIGNIN } from "../server-routes/authRoutes";
 
 const Signin = () => {
     const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const Signin = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+            const response = await axios.post(SIGNIN, formData);
             console.log("hi");
 
             if (response.status === 201) {
